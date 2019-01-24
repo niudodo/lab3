@@ -23,7 +23,9 @@ console.log("Project clicked")
 function projectClick(e){
 	e.preventDefault();
 	$(this).css("background-color", "#7fff00");
+	$(this).animate({opacity:0.25},1000);
 }
+
 var containingProject = $(this).closest(".project");
 containingProject.append("<div class='project-description'><p>Description of the project.</p></div>");
 
