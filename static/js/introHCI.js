@@ -11,11 +11,19 @@ $(document).ready(function() {
 function initializePage() {
 	$("#testjs").click(function(e) {
 		$('.jumbotron h2').text("The world need art");
-		$("#testjs").toggle("Please wait...");
+		$("#testjs p").text(function(i,text){
+			return text === "Click" ? "Please wait..." : "Click";
+		})
 	});
 
 	// Add any additional listeners here
-	// example: $("#div-id").click(functionToCall);
+	$("#div-id").click(function(e){
+		$('.jumbotron h2').text("Welcome");
+		$("#div-id p").text(function(i,text){
+			return text === "ME..." ? "Please wait..." : "ME...";
+		})
+	});
+		
 	$("a.thumbnail").click(projectClick);
 }
 console.log("Project clicked")
@@ -23,7 +31,8 @@ console.log("Project clicked")
 function projectClick(e){
 	e.preventDefault();
 	$(this).css("background-color", "#7fff00");
-	$(this).animate({opacity:0.25},1000);
+	$(this).toggleClass("active");
+	$('#paragraph').toggle();
 }
 
 var containingProject = $(this).closest(".project");
